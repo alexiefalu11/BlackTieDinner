@@ -1,0 +1,129 @@
+﻿@model IEnumerable<Rest_3.Models.Restaurant_Reviews>
+
+@{
+    ViewBag.Title = "Index";
+   
+}
+<div class="col-md-10">
+
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="navbar-header">
+
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+            </button> <a class="navbar-brand" @Html.ActionLink("Black Tie Dinner", "Index", "Home")</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="active">
+                    <a @Html.ActionLink("Restaurants", "Index", "Restaurants")</a>
+                </li>
+                <li>
+                    <a @Html.ActionLink("Reviews", "Index", "Restaurant_Reviews")</a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">All<strong class="caret"></strong></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a @Html.ActionLink("Restaurants", "SearchRest", "Restaurant_Reviews")</a>
+                        </li>
+                        <li>
+                            <a @Html.ActionLink("Reviews Lowest to Highest", "SearchReview", "Restaurant_Reviews")</a>
+                        </li>
+                        <li>
+                            <a @Html.ActionLink("Reviews Highest to Lowest", "SearchReviewHigh", "Restaurant_Reviews")</a>
+                        </li>
+
+                    </ul>
+                </li>
+            </ul>
+            <form action="~/Restaurants/Search" method="get" class="navbar-form navbar-left" role="search">
+                <div class="form-group">
+                    <input type="search" id="search" name="search" placeholder="search your restaurant" class="form-control" />
+                </div>
+                <button type="submit" class="btn btn-default">
+                    Submit
+                </button>
+            </form>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    @Html.Partial("_LoginPartial")
+                </li>
+
+            </ul>
+        </div>
+
+    </nav>
+</div>
+        
+    
+
+
+
+
+
+<h2>Reviews List</h2>
+
+<p>
+    @Html.ActionLink("Add a Review", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Restaurants.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Rating)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Comment)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReviewersName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateCreated)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Restaurants.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Rating)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Comment)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReviewersName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateCreated)
+        </td>
+        <td>
+            @if (ViewBag.displayMenu == "YES" || ViewBag.User == item.ReviewersEmail)
+            {
+
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id }) @:|
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) @:|
+            }
+                @Html.ActionLink("Details", "Details", new { id=item.Id }) 
+            
+        </td>
+    </tr>
+}
+    
+
+</table>
+

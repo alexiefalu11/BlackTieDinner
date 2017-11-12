@@ -1,0 +1,188 @@
+﻿@model IEnumerable<Rest_3.Models.RestaurantRatingModel>
+    @{
+        ViewBag.Title = "Home Page";
+    }
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="carousel slide" id="carousel-593717">
+                    <ol class="carousel-indicators">
+                        <li class="active" data-slide-to="0" data-target="#carousel-593717">
+                        </li>
+                        <li data-slide-to="1" data-target="#carousel-593717">
+                        </li>
+                        <li data-slide-to="2" data-target="#carousel-593717">
+                        </li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            <img alt="Carousel Bootstrap First" src="https://www.profitablehospitality.com.au/wp-content/uploads/2017/04/chinese_header-1600x500.jpg" />
+                            <div class="carousel-caption">
+                                <h4>
+                                   <b>Welcome to Black Tie Dinner</b> 
+                                </h4>
+                                <p>
+                                  <span style="color:black">Find every restaurant near to you and add a review for all of them.</span>  
+                               </p>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img alt="Carousel Bootstrap Second" src="http://www.puredestinations.co.uk/wp-content/uploads/2015/08/street-food-blog-header-1600x500.jpg" />
+                            <div class="carousel-caption">
+                                <h4>
+                                    <b>Black Tie Dinner is the BEST</b>
+                                </h4>
+                                <p>
+                                    Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img alt="Carousel Bootstrap Third" src="https://www.profitablehospitality.com.au/wp-content/uploads/2017/04/foodservice_header-1-1600x500.jpg" />
+                            <div class="carousel-caption">
+                                <h4>
+                                    <b>Nothing like Black Tie Dinner</b>
+                                </h4>
+                                <p>
+                                    Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+                                </p>
+                            </div>
+                        </div>
+                    </div> <a class="left carousel-control" href="#carousel-593717" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a> <a class="right carousel-control" href="#carousel-593717" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                
+                @foreach (var item in Model)
+                {   <blockquote>
+                    <h1 align="center"><b>Top 1</b></h1>
+                    <h3>
+                        <b>Rating: @item.AvgRating.ToString("##.#")</b>
+                    </h3>
+                    <p>
+                        <tr>
+                            <td>
+                                <b>@item.Name</b>
+                                @Html.DisplayName(" from ")
+                                @item.City
+                                @Html.DisplayName(", ")
+                                @item.State
+
+                            </td>
+
+                        </tr>
+                        <br />
+
+                    </p>
+                </blockquote>
+                    break;
+                }
+                <p>
+                    @*<a @Html.ActionLink("View Details","Details","Restaurants") »</a>*@
+                </p>
+            </div>
+            <div class="col-md-3">
+                @{int a = 1; }
+                <blockquote>
+                    <h1 align="center"><b>Top 2</b></h1>
+                    @foreach (var item in Model)
+                    {
+                        if (a == 2)
+                        {
+                            <h3>
+                                <b>Rating: @item.AvgRating.ToString("##.#")</b>
+                            </h3>
+                            <p>
+                                <tr>
+                                    <td>
+                                        <b>@item.Name</b>
+                                        @Html.DisplayName(" from ")
+                                        @item.City
+                                        @Html.DisplayName(", ")
+                                        @item.State
+
+                                    </td>
+
+                                </tr>
+                                <br />
+                            </p>
+                            <p>
+                                @*<a class="btn" href="#">View details »</a>*@
+                            </p>
+                            break;
+                        }
+                        a++;
+
+                    }
+                </blockquote>
+            </div>
+            <div class="col-md-3">
+                <blockquote>
+                    <h1 align="center"><b> Top 3 </b></h1>
+                    @foreach (var item in Model)
+                    {
+                        if (a == 4)
+                        {
+                            <h3>
+                                <b>Rating: @item.AvgRating.ToString("##.#")</b>
+                            </h3>
+                            <p>
+                                <tr>
+                                    <td>
+                                        <b>@item.Name</b>
+                                        @Html.DisplayName(" from ")
+                                        @item.City
+                                        @Html.DisplayName(", ")
+                                        @item.State
+
+                                    </td>
+
+                                </tr>
+                                <br />
+                            </p>
+                            <p>
+                                @*<a class="btn" href="#">View details »</a>*@
+                            </p>
+                            break;
+                        }
+                        a++;
+                    }
+                </blockquote>
+            </div>
+            <div class="col-md-3">
+                <blockquote>
+                    <h2>
+                        Helping Puerto Rico
+                    </h2>
+                    <p>
+                        Dozens and dozens of chefs and restaurants are coming out of the woodwork to help support relief efforts for Puerto Rico, and now it’s all being consolidated into one big unofficial restaurant week called LA Loves Puerto Rico. The grassroots campaign will feature dishes and drinks between October 7 and 14, with proceeds from those sales going to help Unidos Por Puerto Rico. The full list of participating places and chefs is massive, but expect names like Lucques, Barcito, Fat Dog, Herringbone, Jar, Momed, Cliff’s Edge, M.B. Post, and tons more.
+                    </p>
+                    <p>
+                        <a class="btn" href="https://la.eater.com/2017/9/29/16382192/morning-briefing-restaurant-news-los-angeles-puerto-rico">View details »</a>
+                    </p>
+                </blockquote>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <p>
+                     <strong>Black Tie Taste</strong> is a website that allows you to discover information about the different restaurants in the world. You can read the comments about other restaurants in the city and you can also add yours. <small>Have fun!</small>
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <address>
+                            <strong>Black Tie Dinner, Inc.</strong><br /> Urb.Arbolada c/Higuerillo, K-1<br /> Caguas, PR 00725<br /> <abbr title="Phone">Phone:</abbr> (787) 209-0181
+                        </address>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
